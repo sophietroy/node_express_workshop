@@ -1,0 +1,23 @@
+{
+  "name": "node_express_workshop",
+  "version": "1.0.0",
+  "description": "Solution of working through the NodeGirls express-workshop",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sophietroy/node_express_workshop.git"
+  },
+  "author": "Sophie Troy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sophietroy/node_express_workshop/issues"
+  },
+  "homepage": "https://github.com/sophietroy/node_express_workshop#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "express-formidable": "^1.0.0"
+  }
+}
