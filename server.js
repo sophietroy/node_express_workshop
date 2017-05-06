@@ -1,3 +1,5 @@
+// Original solution to node girls express workshop
+
 var express    = require('express');
 var formidable = require('express-formidable');
 var fs         = require('fs');

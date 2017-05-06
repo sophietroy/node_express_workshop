@@ -62,15 +62,20 @@ function addBlogpostsToPage (data) {
 
             var postDiv         = document.createElement('div');
             var postText        = document.createElement('p');
+            var postDate        = document.createElement('p');
             var thumbnail       = document.createElement('img');
             var postContainer   = document.querySelector('.post-container');
 
+            var d = new Date(parseInt(blogpost));
+
             thumbnail.src = "./img/logo2.png";
             thumbnail.className = "thumbnail";
+            postDate.innerHTML = d.toLocaleString();
             postText.innerHTML = data[blogpost];
             postDiv.className = "post";
 
             postDiv.appendChild(thumbnail);
+            postDiv.appendChild(postDate);
             postDiv.appendChild(postText);
             postContainer.appendChild(postDiv);
         }

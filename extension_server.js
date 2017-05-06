@@ -1,20 +1,23 @@
-// Convert the previous solution to use promises
+// Extend Blog solution to include URL parameters and
+// rendering a template
 
 
 var express    = require('express');
 var formidable = require('express-formidable');
 var fs         = require('fs');
+var mustache   = require('mustache-express');
 
 var app = express();
+app.engine('mustache', mustache());
+app.set('view engine', 'mustache');
+app.set('views', __dirname + '/views');
 
 function readFromFile() {
 	return new Promise( function(resolve, reject) {
 		fs.readFile(__dirname + '/data/posts.json', function (error, file) {
 			if (error) {
-				console.error('sophie ' + error);
 				reject(Error('Failed to read from file'));
 			} else {
-				console.log('About to parse JSON from file');
 				var parsedFile = JSON.parse(file);
 				resolve(parsedFile);
 			}
@@ -52,7 +55,12 @@ app.get("/get-posts", function (req, res) {
 });
 
 app.get("/posts/:postId", function(req, res) {
-	res.send('post id: ' + req.params.postId);
+	console.log('post id: ' + req.params.postId);
+	var postId = req.params.postId;
+	readFromFile().then(function (result) {
+		//res.send(result[postId]);
+		res.render('post', { post: postId });
+	});
 });
 
 app.post("/create-post", function (req, res) {
